@@ -11,7 +11,7 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 	parameters = parameters || {};
 
-	var _canvas = parameters.canvas !== undefined ? parameters.canvas : document.createElement( 'canvas' ),
+        var _canvas = parameters.canvas !== undefined ? parameters.canvas : document.createElement( 'canvas', parameters.width, parameters.height ),
 	_context = parameters.context !== undefined ? parameters.context : null,
 
 	_width = _canvas.width,
@@ -2099,23 +2099,23 @@ THREE.WebGLRenderer = function ( parameters ) {
 					break;
 
 				case '1iv':
-					_gl.uniform1iv( location, value );
+					_gl.uniform1iv( location, new Int32Array(value) );
 					break;
 
 				case '3iv':
-					_gl.uniform3iv( location, value );
+					_gl.uniform3iv( location, new Int32Array(value) );
 					break;
 
 				case '1fv':
-					_gl.uniform1fv( location, value );
+					_gl.uniform1fv( location, new Float32Array(value)  );
 					break;
 
 				case '2fv':
-					_gl.uniform2fv( location, value );
+					_gl.uniform2fv( location,  new Float32Array(value)  );
 					break;
 
 				case '3fv':
-					_gl.uniform3fv( location, value );
+					_gl.uniform3fv( location, new Float32Array(value)  );
 					break;
 
 				case '4fv':
@@ -2177,28 +2177,28 @@ THREE.WebGLRenderer = function ( parameters ) {
 				case 'iv1':
 
 					// flat array of integers (JS or typed array)
-					_gl.uniform1iv( location, value );
+					_gl.uniform1iv( location, new Int32Array(value) );
 
 					break;
 
 				case 'iv':
 
 					// flat array of integers with 3 x N size (JS or typed array)
-					_gl.uniform3iv( location, value );
+					_gl.uniform3iv( location, new Int32Array(value) );
 
 					break;
 
 				case 'fv1':
 
 					// flat array of floats (JS or typed array)
-					_gl.uniform1fv( location, value );
+					_gl.uniform1fv( location, new Float32Array(value) );
 
 					break;
 
 				case 'fv':
 
 					// flat array of floats with 3 x N size (JS or typed array)
-					_gl.uniform3fv( location, value );
+					_gl.uniform3fv( location, new Float32Array(value) );
 
 					break;
 
@@ -2362,7 +2362,7 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 					if ( uniform._array === undefined ) {
 
-						uniform._array = [];
+						uniform._array =  new Int32Array();
 
 					}
 

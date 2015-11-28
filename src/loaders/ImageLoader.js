@@ -42,37 +42,16 @@ THREE.ImageLoader.prototype = {
 
 		}
 
-		var image = document.createElement( 'img' );
+		var image = new WebGL.Image();
 
-		image.addEventListener( 'load', function ( event ) {
-
+		image.onload = function ( event ) {
 			THREE.Cache.add( url, this );
 
 			if ( onLoad ) onLoad( this );
 
 			scope.manager.itemEnd( url );
 
-		}, false );
-
-		if ( onProgress !== undefined ) {
-
-			image.addEventListener( 'progress', function ( event ) {
-
-				onProgress( event );
-
-			}, false );
-
 		}
-
-		image.addEventListener( 'error', function ( event ) {
-
-			if ( onError ) onError( event );
-
-			scope.manager.itemError( url );
-
-		}, false );
-
-		if ( this.crossOrigin !== undefined ) image.crossOrigin = this.crossOrigin;
 
 		scope.manager.itemStart( url );
 
@@ -84,7 +63,7 @@ THREE.ImageLoader.prototype = {
 
 	setCrossOrigin: function ( value ) {
 
-		this.crossOrigin = value;
+	//	this.crossOrigin = value;
 
 	}
 

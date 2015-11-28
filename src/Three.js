@@ -15,11 +15,11 @@ if ( typeof define === 'function' && define.amd ) {
 		module.exports = THREE;
 
 }
-
+  var self = this
 
 // polyfills
 
-if ( self.requestAnimationFrame === undefined || self.cancelAnimationFrame === undefined ) {
+/*if ( self.requestAnimationFrame === undefined || self.cancelAnimationFrame === undefined ) {
 
 	// Missing in Android stock browser.
 
@@ -64,7 +64,7 @@ if ( self.requestAnimationFrame === undefined || self.cancelAnimationFrame === u
 
 	} )();
 
-}
+}*/
 
 //
 
@@ -74,7 +74,6 @@ if ( self.performance === undefined ) {
 
 }
 
-if ( self.performance.now === undefined ) {
 
 	( function () {
 
@@ -88,7 +87,6 @@ if ( self.performance.now === undefined ) {
 
 	} )();
 
-}
 
 //
 

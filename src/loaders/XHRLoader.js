@@ -35,47 +35,10 @@ THREE.XHRLoader.prototype = {
 		}
 
 		var request = new XMLHttpRequest();
-		request.open( 'GET', url, true );
+		console.log('xhrloader : ' + url)
+		
+		return require(url)
 
-		request.addEventListener( 'load', function ( event ) {
-
-			var response = event.target.response;
-
-			THREE.Cache.add( url, response );
-
-			if ( onLoad ) onLoad( response );
-
-			scope.manager.itemEnd( url );
-
-		}, false );
-
-		if ( onProgress !== undefined ) {
-
-			request.addEventListener( 'progress', function ( event ) {
-
-				onProgress( event );
-
-			}, false );
-
-		}
-
-		request.addEventListener( 'error', function ( event ) {
-
-			if ( onError ) onError( event );
-
-			scope.manager.itemError( url );
-
-		}, false );
-
-		if ( this.crossOrigin !== undefined ) request.crossOrigin = this.crossOrigin;
-		if ( this.responseType !== undefined ) request.responseType = this.responseType;
-		if ( this.withCredentials !== undefined ) request.withCredentials = this.withCredentials;
-
-		request.send( null );
-
-		scope.manager.itemStart( url );
-
-		return request;
 
 	},
 

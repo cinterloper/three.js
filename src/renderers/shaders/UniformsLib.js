@@ -123,7 +123,7 @@ THREE.UniformsLib = {
 		"shadowBias" : { type: "fv1", value: [] },
 		"shadowDarkness": { type: "fv1", value: [] },
 
-		"shadowMatrix" : { type: "m4v", value: [] }
+		"shadowMatrix" : { type: "m4v", value: [ new THREE.Matrix4() ]  }
 
 	}
 
