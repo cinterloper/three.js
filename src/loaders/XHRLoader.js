@@ -37,8 +37,9 @@ THREE.XHRLoader.prototype = {
 		var request = new XMLHttpRequest();
 		console.log('xhrloader : ' + url)
 		
-		return require(url)
-
+		stuff = JSON.stringify(require(url))
+ 		onLoad(stuff)
+		return(stuff)
 
 	},
 
